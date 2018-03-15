@@ -25,11 +25,11 @@ $(document).ready(function () {
             console.log(response.data.length);
             for (var i = 0; i < response.data.length; i++) {
                 if (i % 4 === 0){
-                    console.log("row" + i);
+                    // console.log("row" + i);
                     var newRow = $("<div class='row'>")
                     $("#gif-container").append(newRow);    
                 }
-                console.log("col" + i);
+                // console.log("col" + i);
 
                 var newCol = $("<div>");
                 $(newCol).attr("class", "col-md-3");
@@ -70,7 +70,7 @@ $(document).ready(function () {
 
     $("#submit-topic").on("click", function(event){
         event.preventDefault();
-        var userInput = $("#user-input").val().trim();
+        var userInput = $("#user-input").val();
         console.log(userInput);
         topics.push(userInput);
         console.log(topics);
