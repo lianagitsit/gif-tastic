@@ -22,18 +22,20 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            console.log(response.data.length);
+            // console.log(response.data.length);
             var newCollection, newRow, newCol, image, imageSource, animate, rating, ratingP;
+            
             for (var i = 0; i < response.data.length; i++) {
+                // Create new collection for each new request
                 if (i === 0) {
                     newCollection = $("<div class='container'>");
                 }
+
+                // Define bootstrap grid
                 if (i % 4 === 0) {
                     newRow = $("<div class='row'>")
                     $(newCollection).append(newRow);
-                    // console.log("row" + i);
                 }
-                // console.log("col" + i);
 
                 newCol = $("<div>");
                 $(newCol).attr("class", "col-md-3");
@@ -41,15 +43,16 @@ $(document).ready(function () {
                 image = $("<img>");
                 imageSource = response.data[i].images.fixed_height_still.url;
                 animate = response.data[i].images.fixed_height.url;
+
                 $(image).attr("src", imageSource);
                 $(image).attr("data-still", imageSource);
                 $(image).attr("data-animate", animate);
                 $(image).attr("data-state", "still");
-                $(image).addClass("gif");
+                $(image).addClass("gif img-responsive center-block");
 
                 rating = response.data[i].rating;
                 ratingP = $("<p>");
-                $(ratingP).text(rating.toUpperCase());
+                $(ratingP).text("Rated " + rating.toUpperCase());
 
                 $(newCol).append(image);
                 $(newCol).append(ratingP);
@@ -75,11 +78,8 @@ $(document).ready(function () {
 
     $("#submit-topic").on("click", function (event) {
         event.preventDefault();
-        // var userInput = $("#user-input").val();
         var userInput = $("#user-input").val();
-        console.log(userInput);
         topics.push(userInput);
-        console.log(topics);
         renderButtons();
     });
 
