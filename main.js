@@ -37,9 +37,7 @@ $(document).ready(function () {
                     $(newCollection).append(newRow);
                 }
 
-                newCol = $("<div>");
-                $(newCol).attr("class", "col-md-3");
-
+                newCol = $("<div class='col-md-3'>");
                 image = $("<img>");
                 imageSource = response.data[i].images.fixed_height_still.url;
                 animate = response.data[i].images.fixed_height.url;
